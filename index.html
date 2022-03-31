@@ -56,11 +56,72 @@
         color: #383b3e;
         font-size: 3.6rem;
       }
+      .blinking-cursor {
+        font-weight: 100;
+        font-size: 3.6rem;
+        color: #2e3d48;
+        -webkit-animation: 1s blink step-end infinite;
+        -moz-animation: 1s blink step-end infinite;
+        -ms-animation: 1s blink step-end infinite;
+        -o-animation: 1s blink step-end infinite;
+        animation: 1s blink step-end infinite;
+        padding-bottom: 1rem;
+      }
+
+      @keyframes "blink" {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: #383b3e;
+        }
+      }
+
+      @-moz-keyframes blink {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: #383b3e;
+        }
+      }
+
+      @-webkit-keyframes "blink" {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: #383b3e;
+        }
+      }
+
+      @-ms-keyframes "blink" {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: #383b3e;
+        }
+      }
+
+      @-o-keyframes "blink" {
+        from,
+        to {
+          color: transparent;
+        }
+        50% {
+          color: #383b3e;
+        }
+      }
     </style>
   </head>
   <body>
     <div onclick="lol()">
-      <h1 id="lol"></h1>
+      <h1 id="lol"></h1><span class="blinking-cursor">|</span>
     </div>
   </body>
   <script>
@@ -72,14 +133,15 @@
 
     if (!isLol) {
       setTimeout(() => {
-        localStorage.setItem('lol', true)
+        localStorage.setItem("lol", true);
         lol();
       }, 4000);
     }
 
     let idx = 0;
-    let txt = "lol";
-    let speed = 300;
+    let cursor = "|";
+    let txt = "  lol";
+    let speed = 500;
 
     function typeWriter() {
       if (idx < txt.length) {
