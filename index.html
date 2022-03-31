@@ -64,14 +64,18 @@
     </div>
   </body>
   <script>
-
     function lol() {
       window.location.href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
     }
 
-    setTimeout(() => {
-      lol()
-    }, 4000)
+    let isLol = localStorage.getItem("lol") ?? null;
+
+    if (!isLol) {
+      setTimeout(() => {
+        localStorage.setItem('lol', true)
+        lol();
+      }, 4000);
+    }
 
     let idx = 0;
     let txt = "lol";
